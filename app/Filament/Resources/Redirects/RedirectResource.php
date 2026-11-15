@@ -7,18 +7,34 @@ use App\Filament\Resources\Redirects\Pages\EditRedirect;
 use App\Filament\Resources\Redirects\Pages\ListRedirects;
 use App\Filament\Resources\Redirects\Schemas\RedirectForm;
 use App\Filament\Resources\Redirects\Tables\RedirectsTable;
+use App\Filament\Support\AdminOnly;
 use App\Models\Redirect;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class RedirectResource extends Resource
 {
+    use AdminOnly;
+
     protected static ?string $model = Redirect::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArrowUturnRight;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Setup';
+
+    protected static ?int $navigationSort = 5;
+
+    protected static ?string $navigationLabel = 'Redirects';
+
+    protected static ?string $modelLabel = 'redirect';
+
+    protected static ?string $pluralModelLabel = 'redirects';
+
+    protected static ?string $recordTitleAttribute = 'from_path';
 
     public static function form(Schema $schema): Schema
     {
@@ -28,13 +44,6 @@ class RedirectResource extends Resource
     public static function table(Table $table): Table
     {
         return RedirectsTable::configure($table);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

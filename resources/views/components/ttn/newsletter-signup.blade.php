@@ -5,8 +5,9 @@
     $compact = in_array($variant, ['footer', 'inline']);
     $source ??= $variant;
     $uid = 'news-'.$variant.'-'.\Illuminate\Support\Str::random(4);
-    $done = session('newsletter_status') === 'success';
-    $failed = session('newsletter_status') === 'error' || $errors->has('email');
+    // Without JavaScript the form redirects back with ?subscribed=1 or 0.
+    $done = request()->query('subscribed') === '1';
+    $failed = request()->query('subscribed') === '0';
 @endphp
 <div {{ $attributes->class(['ttn-news', 'ttn-news--'.$variant]) }} data-newsletter>
     @if ($variant === 'embedded')
@@ -24,7 +25,6 @@
                 <x-ttn.icon name="check" :size="20" />{{ setting('newsletter.success', "You're in. See you in the north.") }}
             </div>
             <form method="post" action="{{ url('/newsletter') }}" @class(['ttn-news-form', 'ttn-news-form--compact' => $compact, 'is-error' => $failed]) @if($done) hidden @endif novalidate>
-                @csrf
                 <input type="hidden" name="source" value="{{ $source }}">
                 <label class="ttn-sr" for="{{ $uid }}">Email address</label>
                 <input class="ttn-news-form__input" id="{{ $uid }}" type="email" name="email" placeholder="you@email.com" autocomplete="email" inputmode="email" required>

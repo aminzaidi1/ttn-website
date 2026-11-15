@@ -13,12 +13,25 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class StoryResource extends Resource
 {
     protected static ?string $model = Story::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedNewspaper;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Content';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $navigationLabel = 'Stories';
+
+    protected static ?string $modelLabel = 'story';
+
+    protected static ?string $pluralModelLabel = 'stories';
+
+    protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema
     {
@@ -28,13 +41,6 @@ class StoryResource extends Resource
     public static function table(Table $table): Table
     {
         return StoriesTable::configure($table);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

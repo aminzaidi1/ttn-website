@@ -2,27 +2,41 @@
 
 namespace App\Filament\Resources\Subscribers;
 
-use App\Filament\Resources\Subscribers\Pages\CreateSubscriber;
-use App\Filament\Resources\Subscribers\Pages\EditSubscriber;
 use App\Filament\Resources\Subscribers\Pages\ListSubscribers;
-use App\Filament\Resources\Subscribers\Schemas\SubscriberForm;
 use App\Filament\Resources\Subscribers\Tables\SubscribersTable;
 use App\Models\Subscriber;
 use BackedEnum;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class SubscriberResource extends Resource
 {
     protected static ?string $model = Subscriber::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedEnvelope;
 
-    public static function form(Schema $schema): Schema
+    protected static string|UnitEnum|null $navigationGroup = 'Audience';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $navigationLabel = 'Subscribers';
+
+    protected static ?string $modelLabel = 'subscriber';
+
+    protected static ?string $pluralModelLabel = 'subscribers';
+
+    protected static ?string $recordTitleAttribute = 'email';
+
+    public static function canCreate(): bool
     {
-        return SubscriberForm::configure($schema);
+        return false;
+    }
+
+    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return false;
     }
 
     public static function table(Table $table): Table
@@ -30,19 +44,10 @@ class SubscriberResource extends Resource
         return SubscribersTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
             'index' => ListSubscribers::route('/'),
-            'create' => CreateSubscriber::route('/create'),
-            'edit' => EditSubscriber::route('/{record}/edit'),
         ];
     }
 }

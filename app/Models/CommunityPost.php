@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CommunityPost extends Model
 {
-    use BustsPageCache, Publishable;
+    use BustsPageCache;
 
     protected $guarded = ['id'];
 

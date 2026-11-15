@@ -13,12 +13,23 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class AboutPhotoResource extends Resource
 {
     protected static ?string $model = AboutPhoto::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleGroup;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Library';
+
+    protected static ?int $navigationSort = 4;
+
+    protected static ?string $navigationLabel = 'About page photos';
+
+    protected static ?string $modelLabel = 'about page photo';
+
+    protected static ?string $pluralModelLabel = 'about page photos';
 
     public static function form(Schema $schema): Schema
     {
@@ -28,13 +39,6 @@ class AboutPhotoResource extends Resource
     public static function table(Table $table): Table
     {
         return AboutPhotosTable::configure($table);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

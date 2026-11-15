@@ -13,12 +13,25 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class NavItemResource extends Resource
 {
     protected static ?string $model = NavItem::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBars3;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Site';
+
+    protected static ?int $navigationSort = 2;
+
+    protected static ?string $navigationLabel = 'Navigation';
+
+    protected static ?string $modelLabel = 'navigation link';
+
+    protected static ?string $pluralModelLabel = 'navigation';
+
+    protected static ?string $recordTitleAttribute = 'label';
 
     public static function form(Schema $schema): Schema
     {
@@ -28,13 +41,6 @@ class NavItemResource extends Resource
     public static function table(Table $table): Table
     {
         return NavItemsTable::configure($table);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

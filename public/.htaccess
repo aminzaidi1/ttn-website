@@ -23,3 +23,30 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# ---- To The North: speed ----
+# Compress text responses.
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/rss+xml application/javascript application/json image/svg+xml font/woff2
+</IfModule>
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/xml application/xml application/rss+xml application/javascript application/json image/svg+xml
+</IfModule>
+
+# Built assets and fonts have hashed or fixed names: cache them for a year.
+# Photos are cached for a month.
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|woff2)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(webp|png|jpg|jpeg|ico|svg)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+<IfModule mod_mime.c>
+    AddType font/woff2 .woff2
+    AddType image/webp .webp
+</IfModule>

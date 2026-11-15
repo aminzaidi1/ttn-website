@@ -3,17 +3,14 @@
 namespace App\Filament\Resources\Settings\Pages;
 
 use App\Filament\Resources\Settings\SettingResource;
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListSettings extends ListRecords
 {
     protected static string $resource = SettingResource::class;
 
-    protected function getHeaderActions(): array
+    public function getSubheading(): ?string
     {
-        return [
-            CreateAction::make(),
-        ];
+        return 'Every heading, line and link on the site that is not part of a story, destination or partner. Click a row to change it.';
     }
 }
