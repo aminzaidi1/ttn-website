@@ -117,3 +117,9 @@ $$('[data-spy]').forEach((spy) => {
   const io = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); }); }, { rootMargin: '-30% 0px -60% 0px' });
   targets.forEach((t) => io.observe(t));
 });
+
+/* Filter pills scroll sideways on phones: bring the active one into view. */
+document.querySelectorAll('.ttn-pills').forEach((row) => {
+  const active = row.querySelector('.is-active');
+  if (active && row.scrollWidth > row.clientWidth) row.scrollLeft = active.offsetLeft - row.clientWidth / 2 + active.clientWidth / 2;
+});

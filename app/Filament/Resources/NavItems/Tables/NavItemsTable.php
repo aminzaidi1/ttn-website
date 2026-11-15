@@ -23,7 +23,10 @@ class NavItemsTable
             ])
             ->groups([
                 Group::make('location')->label('Location')->titlePrefixedWithLabel(false)
-                    ->getTitleFromRecordUsing(fn (NavItem $record): string => NavItem::LOCATIONS[$record->location] ?? $record->location),
+                    ->getTitleFromRecordUsing(fn (NavItem $record): string => NavItem::LOCATIONS[$record->location] ?? $record->location)
+                    ->orderQueryUsing(fn ($query, string $direction) => $query->orderByRaw(
+                        "case location when 'header' then 0 when 'footer_explore' then 1 when 'footer_community' then 2 else 3 end"
+                    )),
             ])
             ->defaultGroup('location')
             ->groupingSettingsHidden()

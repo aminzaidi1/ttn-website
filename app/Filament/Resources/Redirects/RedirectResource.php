@@ -8,6 +8,7 @@ use App\Filament\Resources\Redirects\Pages\ListRedirects;
 use App\Filament\Resources\Redirects\Schemas\RedirectForm;
 use App\Filament\Resources\Redirects\Tables\RedirectsTable;
 use App\Filament\Support\AdminOnly;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\Redirect;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -18,7 +19,7 @@ use UnitEnum;
 
 class RedirectResource extends Resource
 {
-    use AdminOnly;
+    use AdminOnly, SentenceCaseLabels;
 
     protected static ?string $model = Redirect::class;
 

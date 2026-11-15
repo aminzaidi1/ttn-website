@@ -20,7 +20,7 @@ class OrderedRelationSelect
             ->relationship($relationship, $titleAttribute)
             ->preload()
             ->searchable()
-            ->saveRelationshipsUsing(function (Select $component, Model $record): void {
+            ->saveRelationshipsUsing(function (Select $component, Model $record) use ($relationship): void {
                 $ids = collect($component->getState() ?? [])->values();
                 $record->{$relationship}()->sync(
                     $ids->mapWithKeys(fn ($id, int $i): array => [$id => ['order' => $i]])->all()

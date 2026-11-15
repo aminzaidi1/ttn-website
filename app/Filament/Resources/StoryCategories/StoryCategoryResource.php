@@ -8,6 +8,7 @@ use App\Filament\Resources\StoryCategories\Pages\ListStoryCategories;
 use App\Filament\Resources\StoryCategories\Schemas\StoryCategoryForm;
 use App\Filament\Resources\StoryCategories\Tables\StoryCategoriesTable;
 use App\Filament\Support\AdminOnly;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\StoryCategory;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -18,7 +19,7 @@ use UnitEnum;
 
 class StoryCategoryResource extends Resource
 {
-    use AdminOnly;
+    use AdminOnly, SentenceCaseLabels;
 
     protected static ?string $model = StoryCategory::class;
 

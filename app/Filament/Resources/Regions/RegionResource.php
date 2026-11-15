@@ -8,6 +8,7 @@ use App\Filament\Resources\Regions\Pages\ListRegions;
 use App\Filament\Resources\Regions\Schemas\RegionForm;
 use App\Filament\Resources\Regions\Tables\RegionsTable;
 use App\Filament\Support\AdminOnly;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\Region;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -18,7 +19,7 @@ use UnitEnum;
 
 class RegionResource extends Resource
 {
-    use AdminOnly;
+    use AdminOnly, SentenceCaseLabels;
 
     protected static ?string $model = Region::class;
 

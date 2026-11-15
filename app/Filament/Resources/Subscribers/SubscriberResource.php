@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Subscribers;
 
 use App\Filament\Resources\Subscribers\Pages\ListSubscribers;
 use App\Filament\Resources\Subscribers\Tables\SubscribersTable;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\Subscriber;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -13,6 +14,8 @@ use UnitEnum;
 
 class SubscriberResource extends Resource
 {
+    use SentenceCaseLabels;
+
     protected static ?string $model = Subscriber::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedEnvelope;

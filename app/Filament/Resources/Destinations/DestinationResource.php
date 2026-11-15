@@ -7,6 +7,7 @@ use App\Filament\Resources\Destinations\Pages\EditDestination;
 use App\Filament\Resources\Destinations\Pages\ListDestinations;
 use App\Filament\Resources\Destinations\Schemas\DestinationForm;
 use App\Filament\Resources\Destinations\Tables\DestinationsTable;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\Destination;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -17,6 +18,8 @@ use UnitEnum;
 
 class DestinationResource extends Resource
 {
+    use SentenceCaseLabels;
+
     protected static ?string $model = Destination::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMap;

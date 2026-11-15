@@ -8,6 +8,7 @@ use App\Filament\Resources\Users\Pages\ListUsers;
 use App\Filament\Resources\Users\Schemas\UserForm;
 use App\Filament\Resources\Users\Tables\UsersTable;
 use App\Filament\Support\AdminOnly;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\User;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -18,7 +19,7 @@ use UnitEnum;
 
 class UserResource extends Resource
 {
-    use AdminOnly;
+    use AdminOnly, SentenceCaseLabels;
 
     protected static ?string $model = User::class;
 

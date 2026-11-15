@@ -7,6 +7,7 @@ use App\Filament\Resources\NavItems\Pages\EditNavItem;
 use App\Filament\Resources\NavItems\Pages\ListNavItems;
 use App\Filament\Resources\NavItems\Schemas\NavItemForm;
 use App\Filament\Resources\NavItems\Tables\NavItemsTable;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\NavItem;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -17,6 +18,8 @@ use UnitEnum;
 
 class NavItemResource extends Resource
 {
+    use SentenceCaseLabels;
+
     protected static ?string $model = NavItem::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBars3;

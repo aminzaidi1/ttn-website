@@ -1,1 +1,30 @@
 /* To The North — community page styles. Tokens only. Mobile first. */
+.comm-head { max-width: 60ch; margin-bottom: var(--space-4); }
+.comm-head__intro { margin-top: 14px; }
+.comm-label { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: var(--space-3); }
+
+/* Staggered posts: CSS columns, one column on phones. */
+.comm-masonry { column-count: 1; column-gap: var(--space-3); }
+.comm-masonry > * { break-inside: avoid; margin-bottom: var(--space-3); }
+
+.comm-card { display: block; text-decoration: none; background: var(--surface-card); border: var(--border-1); border-radius: var(--radius-card); overflow: hidden; transition: border-color .15s ease; }
+.comm-card:hover { border-color: var(--border-hover); }
+.comm-card__body { padding: var(--space-3); }
+.comm-card__quote { font-size: 15px; line-height: var(--lh-body); color: var(--text-body); }
+.comm-card__by { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: var(--space-2); font-size: var(--fs-caption); color: var(--text-secondary); }
+.comm-card__name { font-weight: var(--weight-semibold); }
+.comm-card__link { display: flex; align-items: center; gap: 6px; margin-top: 14px; padding-top: 14px; border-top: var(--border-1); font-size: 12px; color: var(--text-secondary); transition: color .15s ease; }
+.comm-card:hover .comm-card__link { color: var(--text-body); }
+
+.comm-join { text-align: center; max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.comm-join__title { text-wrap: balance; font-family: var(--font-display); font-weight: var(--weight-black); font-size: clamp(34px, 7vw, 52px); line-height: 1.1; letter-spacing: var(--ls-display); color: var(--text-body); }
+.comm-join__body { max-width: 52ch; margin: 18px 0 28px; font-size: var(--fs-body-lg); line-height: 1.6; color: var(--text-secondary-strong); }
+.comm-join .ttn-btn { white-space: normal; text-align: center; }
+
+@media (min-width: 768px) {
+  .comm-head { margin-bottom: var(--space-6); }
+  .comm-masonry { column-count: 2; }
+}
+@media (min-width: 1024px) {
+  .comm-masonry { column-count: 3; }
+}

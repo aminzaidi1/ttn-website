@@ -8,6 +8,7 @@ use App\Filament\Resources\PartnerCategories\Pages\ListPartnerCategories;
 use App\Filament\Resources\PartnerCategories\Schemas\PartnerCategoryForm;
 use App\Filament\Resources\PartnerCategories\Tables\PartnerCategoriesTable;
 use App\Filament\Support\AdminOnly;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\PartnerCategory;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -18,7 +19,7 @@ use UnitEnum;
 
 class PartnerCategoryResource extends Resource
 {
-    use AdminOnly;
+    use AdminOnly, SentenceCaseLabels;
 
     protected static ?string $model = PartnerCategory::class;
 

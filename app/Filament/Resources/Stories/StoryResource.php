@@ -7,6 +7,7 @@ use App\Filament\Resources\Stories\Pages\EditStory;
 use App\Filament\Resources\Stories\Pages\ListStories;
 use App\Filament\Resources\Stories\Schemas\StoryForm;
 use App\Filament\Resources\Stories\Tables\StoriesTable;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\Story;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -17,6 +18,8 @@ use UnitEnum;
 
 class StoryResource extends Resource
 {
+    use SentenceCaseLabels;
+
     protected static ?string $model = Story::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedNewspaper;

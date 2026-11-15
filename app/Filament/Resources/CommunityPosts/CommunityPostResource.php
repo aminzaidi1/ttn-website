@@ -7,6 +7,7 @@ use App\Filament\Resources\CommunityPosts\Pages\EditCommunityPost;
 use App\Filament\Resources\CommunityPosts\Pages\ListCommunityPosts;
 use App\Filament\Resources\CommunityPosts\Schemas\CommunityPostForm;
 use App\Filament\Resources\CommunityPosts\Tables\CommunityPostsTable;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\CommunityPost;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -17,6 +18,8 @@ use UnitEnum;
 
 class CommunityPostResource extends Resource
 {
+    use SentenceCaseLabels;
+
     protected static ?string $model = CommunityPost::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedChatBubbleLeftRight;

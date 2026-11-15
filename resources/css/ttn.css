@@ -341,3 +341,7 @@ body.is-locked { overflow: hidden; }
 
 /* In a hero the placeholder label sits at the top, clear of the headline. */
 .ttn-hero .ttn-slot { justify-content: flex-start; padding-top: var(--space-6); }
+
+/* Neutral ghost button: for places that must carry no gold (the empty state). */
+.ttn-btn--ghost { background: transparent; color: var(--text-body); border-color: var(--border-hover); }
+.ttn-btn--ghost:hover { border-color: var(--text-body); }

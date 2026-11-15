@@ -7,6 +7,7 @@ use App\Filament\Resources\Photos\Pages\EditPhoto;
 use App\Filament\Resources\Photos\Pages\ListPhotos;
 use App\Filament\Resources\Photos\Schemas\PhotoForm;
 use App\Filament\Resources\Photos\Tables\PhotosTable;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\Photo;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -17,6 +18,8 @@ use UnitEnum;
 
 class PhotoResource extends Resource
 {
+    use SentenceCaseLabels;
+
     protected static ?string $model = Photo::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPhoto;

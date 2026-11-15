@@ -3,5 +3,5 @@
 <div {{ $attributes->class(['ttn-empty']) }}>
     <x-ttn.icon name="mountain" :size="32" />
     <p class="ttn-empty__message">{{ $message }}</p>
-    @if ($actionHref)<x-ttn.button variant="secondary" size="sm" :href="$actionHref">{{ $actionLabel }}</x-ttn.button>@endif
+    @if ($actionHref)<x-ttn.button variant="ghost" size="sm" :href="$actionHref">{{ $actionLabel }}</x-ttn.button>@endif
 </div>

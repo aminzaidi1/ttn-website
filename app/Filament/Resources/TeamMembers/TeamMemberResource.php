@@ -7,6 +7,7 @@ use App\Filament\Resources\TeamMembers\Pages\EditTeamMember;
 use App\Filament\Resources\TeamMembers\Pages\ListTeamMembers;
 use App\Filament\Resources\TeamMembers\Schemas\TeamMemberForm;
 use App\Filament\Resources\TeamMembers\Tables\TeamMembersTable;
+use App\Filament\Support\SentenceCaseLabels;
 use App\Models\TeamMember;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -17,6 +18,8 @@ use UnitEnum;
 
 class TeamMemberResource extends Resource
 {
+    use SentenceCaseLabels;
+
     protected static ?string $model = TeamMember::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;

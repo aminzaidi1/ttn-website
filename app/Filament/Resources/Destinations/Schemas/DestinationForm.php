@@ -24,7 +24,7 @@ class DestinationForm
     {
         return $schema->components([
             Tabs::make('Destination')->columnSpanFull()->persistTabInQueryString()->tabs([
-                Tab::make('Basics')->icon('heroicon-o-information-circle')->schema([
+                Tab::make('Basics')->schema([
                     Grid::make(2)->schema([
                         Copy::text('name', 'Name')->required()->maxLength(255),
                         Select::make('region_id')->label('Region')->relationship('region', 'name')->required()->preload(),
@@ -41,7 +41,7 @@ class DestinationForm
                             ->helperText('Made from the name when left empty. Changing it keeps old links working.'),
                     ]),
                 ]),
-                Tab::make('At a glance')->icon('heroicon-o-squares-2x2')->schema([
+                Tab::make('At a glance')->schema([
                     Section::make()->description('The five facts shown under the hero. Any left empty are simply not shown.')->columns(2)->schema([
                         Copy::text('stat_season', 'Best season')->placeholder('e.g. May to September'),
                         Copy::text('stat_altitude', 'Altitude')->placeholder('e.g. 3,300 m'),
@@ -50,7 +50,7 @@ class DestinationForm
                         Copy::text('stat_permits', 'Permits')->placeholder('e.g. None needed'),
                     ]),
                 ]),
-                Tab::make('Text')->icon('heroicon-o-document-text')->schema([
+                Tab::make('Text')->schema([
                     Copy::rich('overview', 'Overview')
                         ->helperText('The opening of the page. Bold, italic and links only.'),
                     Copy::area('pull_quote', 'Pull quote', 2)
@@ -59,7 +59,7 @@ class DestinationForm
                     Copy::rich('where_to_stay', 'Where to stay')
                         ->helperText('Prices belong here, as ranges inside the sentences. There is no price field on purpose.'),
                 ]),
-                Tab::make('Route legs')->icon('heroicon-o-arrow-trending-up')->schema([
+                Tab::make('Route legs')->schema([
                     Repeater::make('routeLegs')
                         ->hiddenLabel()
                         ->relationship('routeLegs')
@@ -79,7 +79,7 @@ class DestinationForm
                             Copy::area('body', 'Note', 2)->columnSpanFull(),
                         ]),
                 ]),
-                Tab::make('What to do')->icon('heroicon-o-map-pin')->schema([
+                Tab::make('What to do')->schema([
                     Repeater::make('blocks')
                         ->hiddenLabel()
                         ->relationship('blocks')
@@ -100,7 +100,7 @@ class DestinationForm
                             Copy::area('body', 'Text', 4)->columnSpanFull(),
                         ]),
                 ]),
-                Tab::make('Map')->icon('heroicon-o-globe-asia-australia')->schema([
+                Tab::make('Map')->schema([
                     Section::make('The destination')->columns(2)->schema([
                         TextInput::make('lat')->label('Latitude')->numeric()->minValue(-90)->maxValue(90)->placeholder('e.g. 35.38750'),
                         TextInput::make('lng')->label('Longitude')->numeric()->minValue(-180)->maxValue(180)->placeholder('e.g. 74.58360'),
@@ -114,7 +114,7 @@ class DestinationForm
                             TextInput::make('origin_lng')->label('Longitude')->numeric()->minValue(-180)->maxValue(180),
                         ]),
                 ]),
-                Tab::make('Road status')->icon('heroicon-o-exclamation-triangle')->schema([
+                Tab::make('Road status')->schema([
                     Section::make()
                         ->description('Leave both empty to show nothing. If you fill it in, the date is always shown to readers. A stale status is worse than none.')
                         ->schema([
@@ -124,7 +124,7 @@ class DestinationForm
                                 ->validationMessages(['required_with' => 'Add the date you checked the road, so readers know how fresh it is.']),
                         ]),
                 ]),
-                Tab::make('Photos')->icon('heroicon-o-photo')->schema([
+                Tab::make('Photos')->schema([
                     Grid::make(2)->schema([
                         PhotoPicker::make('hero_photo_id', 'Hero photo')->helperText('The large photo at the top of the page.'),
                         PhotoPicker::make('card_photo_id', 'Card photo')->helperText('Shown on destination cards. Leave empty to use the hero photo.'),
@@ -132,11 +132,11 @@ class DestinationForm
                     PhotoPicker::ordered('stripPhotos', 'Photo strip')
                         ->helperText('The row of photos further down the page. Drag the chosen photos to change their order.'),
                 ]),
-                Tab::make('Certified partners')->icon('heroicon-o-check-badge')->schema([
+                Tab::make('Partners')->schema([
                     OrderedRelationSelect::make('partners', 'Certified partners shown on this page')
                         ->helperText('Shown at the foot of the page. Drag to change their order.'),
                 ]),
-                Tab::make('Search engines')->icon('heroicon-o-magnifying-glass')->schema([
+                Tab::make('Search engines')->schema([
                     Copy::text('seo_title', 'Search title')->maxLength(255)
                         ->helperText('Leave empty to use the destination name.'),
                     Copy::area('seo_description', 'Search description', 2)->maxLength(320)

@@ -1,1 +1,13 @@
 /* To The North — misc page styles. Tokens only. Mobile first. */
+
+/* 404: full-bleed photograph, headline centred. */
+.misc-404 { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 80vh; min-height: 80svh; padding: var(--space-12) 0; }
+.misc-404__shade { position: absolute; inset: 0; background: var(--hero-overlay); }
+.misc-404 .ttn-slot { justify-content: flex-start; padding-top: var(--space-4); }
+.misc-404__content { position: relative; max-width: 620px; padding: 0 var(--gutter-mobile); text-align: center; }
+.misc-404__title { margin-top: 18px; font-family: var(--font-display); font-weight: var(--weight-black); font-size: clamp(36px, 7vw, 56px); line-height: 1.1; letter-spacing: var(--ls-display); color: var(--text-body); }
+.misc-404__body { margin-top: 18px; font-size: var(--fs-body); line-height: var(--lh-body); color: var(--text-secondary-strong); }
+.misc-404__action { margin-top: var(--space-4); }
+@media (min-width: 768px) {
+  .misc-404__content { padding: 0 var(--gutter-desktop); }
+}
