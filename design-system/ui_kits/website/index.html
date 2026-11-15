@@ -1,0 +1,174 @@
+<!-- @dsCard group="Website" viewport="1280x760" name="Website — homepage" subtitle="Interactive: home, stories, post, certified" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>To The North</title>
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--ttn-black); }
+  a { color: var(--ttn-white); }
+  a:hover { color: var(--ttn-white); }
+  ::selection { background: var(--ttn-gold); color: var(--ttn-black); }
+
+  /* ---- Responsive grids ---- */
+  .ttn-g2, .ttn-g3, .ttn-g4 { display: grid; gap: var(--space-4); }
+  .ttn-g2 { grid-template-columns: repeat(2, 1fr); }
+  .ttn-g3 { grid-template-columns: repeat(3, 1fr); }
+  .ttn-g4 { grid-template-columns: repeat(4, 1fr); }
+  .ttn-split { display: grid; grid-template-columns: 1fr 1.2fr; gap: var(--space-8); align-items: center; }
+
+  @media (max-width: 1023px) {
+    .ttn-g3 { grid-template-columns: repeat(2, 1fr); }
+    .ttn-g4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 767px) {
+    .ttn-g2, .ttn-g3, .ttn-g4 { grid-template-columns: 1fr; }
+    .ttn-split { grid-template-columns: 1fr; gap: var(--space-6); }
+  }
+
+  /* ---- Section padding scales down on mobile ---- */
+  .ttn-inner { max-width: var(--w-max); margin: 0 auto; padding: 0 var(--gutter-desktop); }
+  @media (max-width: 767px) {
+    .ttn-inner { padding: 0 var(--gutter-mobile); }
+    .ttn-section { padding: var(--space-8) 0 !important; }
+  }
+
+  /* ---- Destination stats bar ---- */
+  .ttn-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-3); }
+  @media (max-width: 1023px) { .ttn-stats { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ---- Community masonry ---- */
+  .ttn-masonry { column-count: 3; column-gap: var(--space-3); }
+  @media (max-width: 1023px) { .ttn-masonry { column-count: 2; } }
+  @media (max-width: 640px) { .ttn-masonry { column-count: 1; } }
+  .ttn-masonry > * { break-inside: avoid; margin-bottom: var(--space-3); }
+
+  /* ---- Destinations editorial rows ---- */
+  .ttn-destrow { display: grid; grid-template-columns: 55fr 45fr; gap: var(--space-6); align-items: center; }
+  .ttn-destrow.flip > :first-child { order: 2; }
+  @media (max-width: 900px) { .ttn-destrow { grid-template-columns: 1fr; } .ttn-destrow.flip > :first-child { order: 0; } }
+
+  /* ---- Stories featured card ---- */
+  .ttn-featured { display: grid; grid-template-columns: 60fr 40fr; border: 1px solid var(--ttn-slate); border-radius: var(--radius-card); overflow: hidden; background: var(--ttn-deep); }
+  @media (max-width: 900px) { .ttn-featured { grid-template-columns: 1fr; } }
+
+  /* ---- Partner gallery: staggered grid ---- */
+  .ttn-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+  .ttn-gallery .ttn-gallery-wide { grid-column: span 2; }
+  @media (max-width: 767px) { .ttn-gallery { grid-template-columns: 1fr; } .ttn-gallery .ttn-gallery-wide { grid-column: span 1; } }
+
+  /* ---- Destination content blocks: stack kind label on mobile ---- */
+  @media (max-width: 767px) { .ttn-ddblock { grid-template-columns: 1fr !important; gap: 8px !important; } }
+
+  /* ---- About stats band ---- */
+  .ttn-stats-about { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+  @media (max-width: 767px) { .ttn-stats-about { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ---- Footer columns ---- */
+  .ttn-footer-cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.4fr; gap: var(--space-6); }
+  @media (max-width: 1023px) { .ttn-footer-cols { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .ttn-footer-cols { grid-template-columns: 1fr; } }
+
+  /* ---- Auto-scrolling photo strip: hide scrollbar ---- */
+  .ttn-nosb { scrollbar-width: none; }
+  .ttn-nosb::-webkit-scrollbar { display: none; }
+
+  /* ---- Nav: swap desktop links for hamburger on mobile ---- */
+  .ttn-nav-desktop { display: flex; }
+  .ttn-nav-burger { display: none; }
+  @media (max-width: 900px) {
+    .ttn-nav-desktop { display: none; }
+    .ttn-nav-burger { display: inline-flex; }
+  }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script src="slots.js"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="data.jsx"></script>
+  <script type="text/babel" src="story-details.jsx"></script>
+  <script type="text/babel" src="destination-details.jsx"></script>
+  <script type="text/babel" src="partner-details.jsx"></script>
+  <script type="text/babel" src="chrome.jsx"></script>
+  <script type="text/babel" src="screens.jsx"></script>
+  <script type="text/babel" src="destination-detail.jsx"></script>
+  <script type="text/babel" src="partner-detail.jsx"></script>
+  <script type="text/babel">
+    const { TTN_Nav, TTN_Footer, TTN_HomeScreen, TTN_StoriesScreen, TTN_PostScreen, TTN_DestinationsScreen, TTN_DestinationDetailScreen, TTN_CertifiedScreen, TTN_PartnerDetailScreen, TTN_CommunityScreen, TTN_AboutScreen,
+            useTweaks, TweaksPanel, TweakSection, TweakSlider, TweakRadio } = window;
+
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "ddSectionPad": 96,
+      "ddArticleWidth": 720,
+      "ddHeroHeight": 70,
+      "ddStatsDensity": "regular"
+    }/*EDITMODE-END*/;
+
+    function App() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      const [page, setPage] = React.useState('Home');
+      const [storyIndex, setStoryIndex] = React.useState(0);
+      const [destIndex, setDestIndex] = React.useState(0);
+      const [partnerIndex, setPartnerIndex] = React.useState(0);
+      const [searchOpen, setSearchOpen] = React.useState(false);
+
+      const navigate = (p) => { setPage(p); window.scrollTo(0, 0); };
+      const openStory = (i) => { setStoryIndex(i); setPage('Post'); window.scrollTo(0, 0); };
+      const openDestination = (i) => { setDestIndex(i); setPage('Destination'); window.scrollTo(0, 0); };
+      const openPartner = (i) => { setPartnerIndex(i); setPage('Partner'); window.scrollTo(0, 0); };
+
+      let active = page === 'Post' ? 'Stories' : page === 'Destination' ? 'Destinations' : page === 'Partner' ? 'TTN Certified' : page;
+      let screen;
+      if (page === 'Home') screen = <TTN_HomeScreen onNavigate={navigate} onOpenStory={openStory} onOpenDestination={openDestination} onOpenPartner={openPartner} />;
+      else if (page === 'Stories') screen = <TTN_StoriesScreen onOpenStory={openStory} />;
+      else if (page === 'Post') screen = <TTN_PostScreen index={storyIndex} onOpenStory={openStory} />;
+      else if (page === 'Destinations') screen = <TTN_DestinationsScreen onOpenDestination={openDestination} />;
+      else if (page === 'Destination') screen = <TTN_DestinationDetailScreen index={destIndex} onOpenStory={openStory} onOpenDestination={openDestination} onOpenPartner={openPartner} />;
+      else if (page === 'TTN Certified') screen = <TTN_CertifiedScreen onOpenPartner={openPartner} />;
+      else if (page === 'Partner') screen = <TTN_PartnerDetailScreen index={partnerIndex} onOpenPartner={openPartner} />;
+      else if (page === 'Community') screen = <TTN_CommunityScreen />;
+      else if (page === 'About') screen = <TTN_AboutScreen />;
+      else screen = <window.TTN_NotFoundScreen onHome={() => navigate('Home')} />;
+
+      const isArticle = page === 'Post' || page === 'Destination' || page === 'Partner';
+      return (
+        <div style={{
+          '--dd-pad': t.ddSectionPad + 'px',
+          '--dd-article': Math.min(t.ddArticleWidth, 720) + 'px',
+          '--dd-hero': t.ddHeroHeight + 'vh',
+          '--dd-stats-pad': (t.ddStatsDensity === 'compact' ? 18 : t.ddStatsDensity === 'airy' ? 40 : 28) + 'px',
+        }}>
+          {isArticle && <window.TTN_ProgressBar />}
+          <TTN_Nav active={active} onNavigate={navigate} onSearch={() => setSearchOpen(true)} />
+          {screen}
+          <TTN_Footer onNavigate={navigate} />
+          <window.TTN_SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)}
+            onOpenStory={openStory} onOpenDestination={openDestination} onOpenPartner={openPartner} />
+          <TweaksPanel>
+            <TweakSection label="Destination page spacing" />
+            <TweakSlider label="Section padding" value={t.ddSectionPad} min={48} max={160} step={4} unit="px"
+                         onChange={(v) => setTweak('ddSectionPad', v)} />
+            <TweakSlider label="Article width" value={Math.min(t.ddArticleWidth, 720)} min={560} max={720} step={10} unit="px"
+                         onChange={(v) => setTweak('ddArticleWidth', v)} />
+            <TweakSlider label="Hero height" value={t.ddHeroHeight} min={50} max={90} step={5} unit="vh"
+                         onChange={(v) => setTweak('ddHeroHeight', v)} />
+            <TweakRadio  label="Stats bar" value={t.ddStatsDensity}
+                         options={['compact', 'regular', 'airy']}
+                         onChange={(v) => setTweak('ddStatsDensity', v)} />
+          </TweaksPanel>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+/* To The North — Spacing tokens. Base unit: 8px */
+:root {
+  --space-1:  8px;   /* icon padding, tight inline gaps */
+  --space-2:  16px;  /* component internal padding */
+  --space-3:  24px;  /* card padding, small section gaps */
+  --space-4:  32px;  /* standard component gap */
+  --space-6:  48px;  /* section internal spacing */
+  --space-8:  64px;  /* section padding top/bottom */
+  --space-12: 96px;  /* major section separator */
+  --space-16: 128px; /* hero vertical padding */
+}

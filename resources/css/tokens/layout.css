@@ -1,0 +1,25 @@
+/* To The North — Layout & shape tokens */
+:root {
+  /* Content widths */
+  --w-max:     1280px; /* max content width */
+  --w-content: 1100px; /* standard content width */
+  --w-article: 720px;  /* article / blog max width */
+
+  /* Gutters */
+  --gutter-mobile:  24px;
+  --gutter-desktop: 40px;
+
+  /* Radii — sharp brand, small radii only. No drop shadows; use borders. */
+  --radius-button: 4px;
+  --radius-input:  4px;
+  --radius-card:   6px;
+  --radius-pill:   999px;
+
+  /* Borders */
+  --border-1: 1px solid var(--border-subtle);
+
+  /* Breakpoints (reference) */
+  --bp-tablet:  768px;
+  --bp-desktop: 1024px;
+  --bp-wide:    1280px;
+}

@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Surface rhythm" subtitle="Sections alternate #0A0A0A and #111111 — never a third" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin:0; font-family:var(--font-body); }
+  .row { display:flex; height:150px; }
+  .col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
+  .a { background:var(--ttn-black); }
+  .b { background:var(--ttn-deep); }
+  .lab { font-size:12px; color:var(--ttn-grey); letter-spacing:0.04em; }
+  .hex { font-size:11px; color:var(--ttn-grey); opacity:0.7; }
+  .dot { width:10px; height:10px; border-radius:50%; background:var(--ttn-gold); }
+  .note { font-size:11px; color:var(--ttn-grey); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="col a"><div class="dot"></div><span class="lab">Base section</span><span class="hex">#0A0A0A</span></div>
+    <div class="col b"><span class="lab">Alt section</span><span class="hex">#111111</span><span class="note">one gold element per section</span></div>
+    <div class="col a"><div class="dot"></div><span class="lab">Base section</span><span class="hex">#0A0A0A</span></div>
+  </div>
+</body>
+</html>

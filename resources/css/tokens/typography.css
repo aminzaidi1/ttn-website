@@ -1,0 +1,38 @@
+/* To The North — Typography tokens */
+:root {
+  /* Families */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-quote:   'Playfair Display', Georgia, serif; /* use italic 400 */
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-black:   900;
+
+  /* Type scale (px) */
+  --fs-hero:      88px; /* 72-96 range */
+  --fs-section:   44px; /* 40-48 */
+  --fs-card:      26px; /* 24-28 */
+  --fs-body-lg:   18px;
+  --fs-body:      16px;
+  --fs-ui:        14px;
+  --fs-caption:   13px;
+  --fs-micro:     11px;
+
+  /* Line heights */
+  --lh-display: 1.15; /* @kind font */ /* 1.1-1.2 */
+  --lh-body:    1.7;  /* @kind font */
+  --lh-ui:      1.4;  /* @kind font */
+
+  /* Letter spacing */
+  --ls-display: -0.02em; /* display at large sizes */
+  --ls-ui:      0.04em;  /* UI labels & buttons */
+  --ls-eyebrow: 0.1em;   /* eyebrow / section labels */
+  --ls-badge:   0.08em;  /* certified / region badges */
+
+  /* Measure */
+  --measure-body: 68ch;
+}

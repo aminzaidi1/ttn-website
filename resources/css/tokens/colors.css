@@ -1,0 +1,41 @@
+/* To The North — Colour tokens
+   The site lives in near-black. Gold is the only warm accent. */
+:root {
+  /* Base palette */
+  --ttn-black:  #0A0A0A; /* primary background, hero sections */
+  --ttn-deep:   #111111; /* card backgrounds, secondary surfaces */
+  --ttn-gold:   #F5A623; /* primary accent, logo, CTAs, highlights */
+  --ttn-amber:  #C47D0E; /* hover states, secondary gold */
+  --ttn-white:  #F5F5F0; /* body text on dark backgrounds */
+  --ttn-grey:   #8A8A8A; /* captions, metadata, secondary text (short lines only) */
+  --ttn-grey-light: #B4B4AE; /* multi-line secondary text: excerpts, blurbs, subtitles */
+  --ttn-slate:  #1E1E1E; /* dividers, subtle borders */
+  --ttn-green:  #1A3A1A; /* sparingly: nature / environment accent only */
+
+  /* Extra greys used by component states */
+  --ttn-border-lift: #333333; /* card hover border, input border */
+  --ttn-error: #E2553D;       /* form error state only */
+
+  /* Semantic surface aliases */
+  --surface-base:    var(--ttn-black);
+  --surface-alt:     var(--ttn-deep);
+  --surface-card:    var(--ttn-deep);
+  --surface-input:   var(--ttn-slate);
+
+  /* Semantic text aliases */
+  --text-body:       var(--ttn-white);
+  --text-secondary:  var(--ttn-grey);
+  --text-secondary-strong: var(--ttn-grey-light); /* use when secondary text runs longer than one line */
+  --text-accent:     var(--ttn-gold);
+  --text-on-gold:    var(--ttn-black);
+
+  /* Lines & accents */
+  --border-subtle:   var(--ttn-slate);
+  --border-hover:    var(--ttn-border-lift);
+  --border-gold:     var(--ttn-gold);
+  --accent:          var(--ttn-gold);
+  --accent-hover:    var(--ttn-amber);
+
+  /* Hero text-legibility gradient */
+  --hero-overlay: linear-gradient(to bottom, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0.75) 100%); /* @kind other */
+}

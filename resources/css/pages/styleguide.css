@@ -1,0 +1,18 @@
+/* To The North — styleguide page styles. Tokens only. Mobile first. */
+.sg-block { padding: var(--space-6) 0; border-top: var(--border-1); }
+.sg-block > h2 { margin-bottom: var(--space-1); }
+.sg-note { font-size: var(--fs-ui); color: var(--text-secondary-strong); max-width: var(--measure-body); margin-bottom: var(--space-4); }
+.sg-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin-bottom: var(--space-3); }
+.sg-label { display: block; font-size: var(--fs-micro); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--text-secondary); margin: var(--space-3) 0 var(--space-1); }
+.sg-swatches { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
+.sg-swatch { border: var(--border-1); border-radius: var(--radius-card); overflow: hidden; font-size: 12px; }
+.sg-swatch__chip { height: 64px; }
+.sg-swatch__meta { padding: 10px 12px; color: var(--text-secondary); line-height: var(--lh-ui); }
+.sg-swatch__meta strong { display: block; color: var(--text-body); font-weight: var(--weight-medium); }
+.sg-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: var(--space-2); }
+.sg-icons div { display: flex; flex-direction: column; align-items: center; gap: var(--space-1); font-size: var(--fs-micro); color: var(--text-secondary); padding: var(--space-2) 4px; border: var(--border-1); border-radius: var(--radius-card); }
+.sg-icons .ttn-icon { color: var(--text-body); }
+.sg-space { display: flex; align-items: center; gap: var(--space-2); font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+.sg-space i { display: block; height: 12px; background: var(--border-hover); }
+.sg-narrow { max-width: 420px; }
+@media (min-width: 768px) { .sg-swatches { grid-template-columns: repeat(4, 1fr); } }
