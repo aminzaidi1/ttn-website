@@ -23,6 +23,9 @@ class StoryCategoryResource extends Resource
 
     protected static ?string $model = StoryCategory::class;
 
+    // Address records by id in the admin, so changing a slug never breaks the edit screen.
+    protected static ?string $recordRouteKeyName = 'id';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTag;
 
     protected static string|UnitEnum|null $navigationGroup = 'Setup';

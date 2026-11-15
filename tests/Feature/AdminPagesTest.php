@@ -109,7 +109,7 @@ class AdminPagesTest extends TestCase
 
             if ($hasEdit) {
                 $record = $model::query()->firstOrFail();
-                $this->get("/admin/{$slug}/{$record->getRouteKey()}/edit")->assertOk();
+                $this->get("/admin/{$slug}/{$record->getKey()}/edit")->assertOk();
             }
         }
     }
@@ -196,7 +196,7 @@ class AdminPagesTest extends TestCase
 
         $undo = Repeater::fake();
 
-        Livewire::test(EditDestination::class, ['record' => $destination->getRouteKey()])
+        Livewire::test(EditDestination::class, ['record' => $destination->getKey()])
             ->fillForm([
                 'routeLegs' => [
                     ['from_place' => 'Islamabad', 'to_place' => 'Chilas', 'distance' => '450 km', 'duration' => '10 hours', 'body' => 'Leave early.'],

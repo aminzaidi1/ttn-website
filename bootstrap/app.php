@@ -17,6 +17,19 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: ['newsletter']);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
+        // Before showing a 404, check whether an editor renamed this page: old addresses keep working.
+        $exceptions->render(function (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e, Request $request) {
+            if ($request->isMethod('GET') && ! $request->is('admin*')) {
+                try {
+                    $redirect = \App\Models\Redirect::where('from_path', '/'.trim($request->path(), '/'))->first();
+                } catch (\Throwable) {
+                    $redirect = null;
+                }
+                if ($redirect) {
+                    return redirect($redirect->to_path, 301);
+                }
+            }
+        });
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );

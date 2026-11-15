@@ -1,6 +1,6 @@
 # To The North: build plan
 
-Status: awaiting approval. Nothing is built yet. Written 15 Nov 2026 after reading `design-system/readme.md`, `SKILL.md`, `AUDIT.md`, `PHOTOGRAPHY-BRIEF.md`, the 11 components and every screen in `design-system/ui_kits/website/`.
+Status: approved and built. The site was built in one pass at the owner's request, using the recommendations in section 0. Written 15 Nov 2026 after reading `design-system/readme.md`, `SKILL.md`, `AUDIT.md`, `PHOTOGRAPHY-BRIEF.md`, the 11 components and every screen in `design-system/ui_kits/website/`.
 
 ## 0. Decisions I need from you
 

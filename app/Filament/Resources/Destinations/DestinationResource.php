@@ -22,6 +22,9 @@ class DestinationResource extends Resource
 
     protected static ?string $model = Destination::class;
 
+    // Address records by id in the admin, so changing a slug never breaks the edit screen.
+    protected static ?string $recordRouteKeyName = 'id';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMap;
 
     protected static string|UnitEnum|null $navigationGroup = 'Content';

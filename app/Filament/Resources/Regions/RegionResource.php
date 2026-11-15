@@ -23,6 +23,9 @@ class RegionResource extends Resource
 
     protected static ?string $model = Region::class;
 
+    // Address records by id in the admin, so changing a slug never breaks the edit screen.
+    protected static ?string $recordRouteKeyName = 'id';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedGlobeAsiaAustralia;
 
     protected static string|UnitEnum|null $navigationGroup = 'Setup';
